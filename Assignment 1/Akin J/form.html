@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>First page</title>
+</head>
+<body>
+<center>
+<form>
+<label>Name &emsp;&emsp;&ensp;</label>
+<input type="text" name="name" placeholder="enter name" required ><br>
+<label> Qualification </label>
+<select id="Qualification">
+<option id="Qualification">BE</option>
+<option id="Qualification">B.TECH</option>
+<option id="Qualification">BDC</option>
+<option id="Qualification">BBA</option>
+<option id="Qualification">BARCH</option>
+<option id="Qualification">BCOM</option>
+</select><br>
+<label>Age &emsp;&emsp;&nbsp;</label>
+<input type="number" name="age" placeholder="enter age" required ><br>
+<label>Email &emsp;&emsp;&ensp;</label>
+<input type="text" name="email" placeholder="enter email" required ><br>
+</form>
+<center>
+</body>
+</html>
