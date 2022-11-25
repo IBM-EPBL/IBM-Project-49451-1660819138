@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Assignment 2</title>
+<style>
+tr {
+line-height: 2.1;
+}
+</style>
+</head>
+<body>
+<center>
+<h3>ASSIGNMENT 2<br><br>FILE UPLOAD - RESUME</h3>
+<div>
+<form action ="/upload" method="POST" enctype="multipart/form-data">
+<b><label>Upload the Resume</label><br><br></b>
+<input type ="file" name ="file"/>
+<input type ="submit" value="Save"/>
+</div>
+<div>
+<form action = "/upload" method = "post">
+<table>
+<tr><th></th><th></th></tr>
+<tr><td><label> Name : </label></td>
+<td><input type="text" name="name" placeholder="Enter Name"
+required ></td></tr>
+<td><label> Date of Birth : </label></td>
+<td><input type="date" name="dob" placeholder="Enter DOB"
+required></td></tr>
+<tr><td><label> Email : </label></td>
+<td><input type="text" name="email" placeholder="Enter Email"
+required></td></tr>
+<tr><td><label> College Name :&emsp;&emsp;&emsp;</label></td>
+<td><input type="text" name="clg" placeholder="Enter College Name"
+required></td></tr>
+<tr>
+<td><label>Qualification</label></td>
+<td><select id="qua" name="deg">
+<option value="none" selected disabled hidden>Select the
+Degree</option>
+<option value="B.E">B.E</option>
+<option value="B.Tech">B.Tech</option>
+<option value="B.Sc">B.Sc</option>
+<option value="B.A">B.A</option></select></td></tr>
+<td><label> CGPA in %: </label></td>
+<td><input type="number" length="2" name="cgpa" placeholder="Enter
+CGPA" required></td></tr>
+<td><label> Year : </label></td>
+<td><input type="date" name="year" placeholder="Year of Completion"
+required></td></tr>
+<tr>
+<td><label>Language</label></td>
+<td><select id="lan" name="lan">
+<option value="none" selected disabled hidden>Select the Skill</option>
+<option value="Python">Python</option>
+<option value="C/ C++">C/ C++</option>
+<option value="Javascript">Javascript</option>
+<option value="HTML & CSS">HTML & CSS</option>
+<option value="Java">Java</option>
+</select></td></tr>
+<tr><td colspan=2><center>
+<input type="submit" name="submit"></center></td></tr>
+</form></div>
+</table>
+</center>
+</body>
+</html>
