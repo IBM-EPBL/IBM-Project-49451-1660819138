@@ -1,0 +1,213 @@
+Question-1:
+Write a flask program which should display Name , Email, phone and it should display the same 
+details once we hit submit.
+Solution
+Index.html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Assignment 2</title>
+<style>
+td {
+line-height: 2.1;
+}
+</style>
+</head>
+<body>
+<center>
+<h3>ASSIGNMENT 2</h3>
+<form action = "/login" method = "post">
+<table>
+<tr><th></th><th></th></tr>
+<tr>
+<td><label> Name : </label></td>
+<td><input type="text" name="name" placeholder="Enter Name" required ></td></tr>
+<tr>
+<td><label> Email : </label></td>
+<td><input type="email" name="email" placeholder="Enter Email" required></td></tr>
+<tr>
+<td><label> Password : </label></td>
+<td><input type="password" name="pass" placeholder="Enter Password" required></td></tr>
+<tr><td colspan=2>
+<center>
+<input type="submit" name="submit"></center></td></tr>
+</form>
+</table>
+</center>
+</body>
+</html>
+display.html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Assignment 2</title>
+<style>
+td {
+line-height: 2.1;
+}
+</style>
+</head>
+<body>
+<center>
+<h3>ASSIGNMENT 2</h3>
+<form action = "/login" method = "post">
+<table>
+<tr><td> Name : <b>{{y}}</b></td></tr>
+<tr><td> Email : <b>{{x}}</b></td></tr>
+<tr><td> Password : <b>{{z}}</b></td></tr>
+</table></form>
+</center>
+</body>
+</html>
+Display.py
+from flask import Flask, render_template, request
+app = Flask(__name__,template_folder = 'template')
+@app.route('/')
+def home():
+ return render_template('index.html')
+@app.route('/login' , methods = ["POST"])
+def login():
+ if request.method == "POST":
+ n=request.form.get('name')
+ e=request.form.get('email')
+ p=request.form.get('pass')
+ return render_template("display.html",y=n,x=e,z=p)
+if __name__=='__main__':
+ app.run(debug = True)
+Question-2:
+Write a flask program which should cover cookies, sessions.
+Solution:
+Cookie.py
+from flask import *
+app = Flask(__name__)
+@app.route('/')
+def keys():
+res = make_response("Cookie was inserted successfully :)")
+res.set_cookie('IBM','Assignment2')
+return res
+if __name__=='__main__':
+app.run(debug = True)
+Question-3:
+Write a flask program which should display resume details and also have upload resume option
+by using file uploading.
+Solution:
+Resume.html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Assignment 2</title>
+<style>
+tr {
+line-height: 2.1;
+}
+</style>
+</head>
+<body>
+<center>
+<h3>ASSIGNMENT 2<br><br>FILE UPLOAD - RESUME</h3>
+<div>
+<form action ="/upload" method="POST" enctype="multipart/form-data">
+<b><label>Upload the Resume</label><br><br></b>
+<input type ="file" name ="file"/>
+<input type ="submit" value="Save"/>
+</div>
+<div>
+<form action = "/upload" method = "post">
+<table>
+<tr><th></th><th></th></tr>
+<tr><td><label> Name : </label></td>
+<td><input type="text" name="name" placeholder="Enter Name"
+required ></td></tr>
+<td><label> Date of Birth : </label></td>
+<td><input type="date" name="dob" placeholder="Enter DOB"
+required></td></tr>
+<tr><td><label> Email : </label></td>
+<td><input type="text" name="email" placeholder="Enter Email"
+required></td></tr>
+<tr><td><label> College Name :&emsp;&emsp;&emsp;</label></td>
+<td><input type="text" name="clg" placeholder="Enter College Name"
+required></td></tr>
+<tr>
+<td><label>Qualification</label></td>
+<td><select id="qua" name="deg">
+<option value="none" selected disabled hidden>Select the
+Degree</option>
+<option value="B.E">B.E</option>
+<option value="B.Tech">B.Tech</option>
+<option value="B.Sc">B.Sc</option>
+<option value="B.A">B.A</option></select></td></tr>
+<td><label> CGPA in %: </label></td>
+<td><input type="number" length="2" name="cgpa" placeholder="Enter
+CGPA" required></td></tr>
+<td><label> Year : </label></td>
+<td><input type="date" name="year" placeholder="Year of Completion"
+required></td></tr>
+<tr>
+<td><label>Language</label></td>
+<td><select id="lan" name="lan">
+<option value="none" selected disabled hidden>Select the Skill</option>
+<option value="Python">Python</option>
+<option value="C/ C++">C/ C++</option>
+<option value="Javascript">Javascript</option>
+<option value="HTML & CSS">HTML & CSS</option>
+<option value="Java">Java</option>
+</select></td></tr>
+<tr><td colspan=2><center>
+<input type="submit" name="submit"></center></td></tr>
+</form></div>
+</table>
+</center>
+</body>
+</html>
+displayResume.html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Assignment 2</title>
+<style>
+tr {
+line-height: 2.1;
+}
+</style>
+</head>
+<body>
+<center>
+<h3> RESUME</h3>
+<table>
+<tr><td>Name</td> <td><b>{{a}}</b></td></tr>
+<tr><td>Date of Birth</td> <td><b>{{b}}</b></td></tr>
+<tr><td>Email</td> <td><b>{{c}}</b></td></tr>
+<tr><td>College Name &emsp;&emsp;&emsp;</td>
+<td><b>{{d}}</b></td></tr>
+<tr><td>Qualification</td> <td><b>{{e}}</b></td></tr>
+<tr><td>CGPA in %</td> <td><b>{{f}}</b></td></tr>
+<tr><td>Year</td> <td><b>{{g}}</b></td></tr>
+<tr><td>Language</td> <td><b>{{h}}</b></td></tr>
+<tr><td>Resume</td> <td><b>{{y}}</b></td></tr>
+</center>
+</body>
+</html>
+fileupload.py
+from flask import Flask,render_template,request
+from werkzeug.utils import secure_filename
+app = Flask(__name__,template_folder = 'template')
+@app.route('/')
+def file():
+ return render_template('resume.html')
+@app.route('/upload', methods=['GET','POST'])
+def flk_up():
+ if request.method=='POST':
+ fl= request.files['file']
+ fl.save(secure_filename(fl.filename))
+ a=request.form.get('name')
+ b=request.form.get('dob')
+ c=request.form.get('email')
+ d=request.form.get('clg')
+ e=request.form.get('deg')
+ f=request.form.get('cgpa')
+ g=request.form.get('year')
+ h=request.form.get('lan')
+ return
+ render_template("displayResume.html",a=a,b=b,c=c,d=d,e=e,f=f,g=g,h=h,y=fl.filename)
+if __name__=='__main__':
+ app.run(debug = True)
